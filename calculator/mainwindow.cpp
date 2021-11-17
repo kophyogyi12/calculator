@@ -160,7 +160,7 @@ void MainWindow::on_equalto_clicked()
 
 void MainWindow::on_Clear_clicked()
 {
-    c_count=1;
+    
  ui->label->clear();
  temp=0;
  count=0;
