@@ -111,7 +111,7 @@ void MainWindow::cal(){
 else if(count>1){
     n3+=btn->text();
     sum_in_memory=n3.toDouble();
-    qInfo()<<num3;
+    qInfo()<<sum_in_memory;
 
 }
 else{
@@ -158,7 +158,16 @@ void MainWindow::on_equalto_clicked()
     temp=QString::number(answer);
     ui->label->setText(temp);
 
-
+    count=0;
+    num=0.0;
+    num2=0.0;
+   sum_in_memory=0.0;
+   num3=0.0;
+   n3=0;
+   num_s=0;
+   n=0;
+   n2=0;
+num=ui->label->text().toDouble();
 }
 
 void MainWindow::on_Clear_clicked()

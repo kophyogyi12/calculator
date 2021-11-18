@@ -46,5 +46,6 @@ void opreator();
 int count=0;
 int c_count=0;
 double sum_in_memory=0;
+int equal_count=0;
 void cal();};
 #endif // MAINWINDOW_H
