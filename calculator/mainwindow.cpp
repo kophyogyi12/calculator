@@ -138,8 +138,11 @@ void MainWindow::on_equalto_clicked()
     }
     else if(op=="*"){
               many_opreator();
-        answer=num*num2*num3;
-
+              if(count>1){
+                  answer=num*num2*num3;
+              }else{
+        answer=num*num2;
+}
     }
     else if(op=="+"){
                 many_opreator();
@@ -160,7 +163,7 @@ void MainWindow::on_equalto_clicked()
 
 void MainWindow::on_Clear_clicked()
 {
-    
+
  ui->label->clear();
  temp=0;
  count=0;
@@ -177,12 +180,26 @@ n2=0;
 void MainWindow::many_opreator(){
 
     if(count>1){
+        if(op=="*"){
         num3=num3+sum_in_memory;
         qInfo()<<num3;
-        sum_in_memory=0.0;
-        n3=0;
+        sum_in_memory=1.0;
+        n3="1";
+}
+        else{
+
+            num3=num3+sum_in_memory;
+            qInfo()<<num3;
+            sum_in_memory=0.0;
+            n3=0;
+
+}
 
 }
 }
 
+void MainWindow::on_label_linkActivated(const QString &link)
+{
+    ui->label->setTextInteractionFlags(Qt::TextBrowserInteraction);
+}
 
