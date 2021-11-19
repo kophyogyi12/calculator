@@ -23,6 +23,12 @@ private slots:
 
     void on_Clear_clicked();
 
+
+
+    void on_label_linkActivated(const QString &link);
+
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -41,6 +47,10 @@ void many_opreator();
 void opreator();
 int count=0;
 int c_count=0;
-double sum_in_memory=0.0;
+double sum_in_memory=0;
+int equal_count=0;
+int plus=0;
+int minus=0;
+
 void cal();};
 #endif // MAINWINDOW_H

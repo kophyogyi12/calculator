@@ -30,39 +30,47 @@ MainWindow::~MainWindow()
 void MainWindow::opreator(){
     count=count+1;
     QPushButton* btn = qobject_cast <QPushButton*> (sender());
-
     if(count>1){
 
-        if(op=="/"){
-            num3=num3/sum_in_memory;
-        }
-       else if(op=="*"){
-                 many_opreator();
-          num3=num3*sum_in_memory;
-          qInfo()<<sum_in_memory;
 
+        if(op=="/"){
+            if(count==2){
+
+                on_equalto_clicked();
+
+            }
+
+       }
+       else if(op=="*"){
+      if(count==2){
+          on_equalto_clicked();
+
+      }
        }
        else if(op=="+"){
+
                    many_opreator();
       num3=num3+sum_in_memory;
+}
 
-       }
+
        else if(op=="-"){
+
                  many_opreator();
            num3=num3-sum_in_memory;
+}
 
-       }
         qInfo()<<num3;
         sum_in_memory=0.0;
         n3=0;
 
         if(btn==ui->btn_Division){
             op="/";
-            temp+="/";
+
         }
         else if(btn==ui->btn_Mutiply){
             op="*";
-            temp+="*";
+
         }
         else if(btn==ui->btn_Plus){
             op="+";
@@ -74,6 +82,7 @@ void MainWindow::opreator(){
         }
     }
 else{
+
   if(btn==ui->btn_Division){
       op="/";
       temp+="/";
@@ -83,10 +92,12 @@ else{
       temp+="*";
   }
   else if(btn==ui->btn_Plus){
+      Plus=true;
       op="+";
       temp+="+";
   }
   else if(btn==ui->btn_Minus){
+      Minus=true;
       op="-";
       temp+="-";
   }
@@ -98,21 +109,23 @@ else{
 void MainWindow::cal(){
 
          QPushButton* btn = qobject_cast <QPushButton*> (sender());
-
     temp+=btn->text();
 
    if(count==0){
+
     n+=btn->text();
     num=n.toDouble();
     qInfo()<<num;
+
  }
 else if(count>1){
     n3+=btn->text();
     sum_in_memory=n3.toDouble();
-    qInfo()<<num3;
+    qInfo()<<sum_in_memory;
 
 }
 else{
+
            n2+=btn->text();
            num2=n2.toDouble();
            qInfo()<<num2;
@@ -126,27 +139,12 @@ else{
 
 void MainWindow::on_equalto_clicked()
 {
-
-
-
      if(op=="/"){
-
-        answer=num/num2/num3;
-
+        answer=num/num2;
     }
     else if(op=="*"){
-              many_opreator();
-        if(count>1){
-        answer=num*num2*num3;
-        }
-        else{
-            num3=1;
-            answer=num*num2*num3;
-        }
-        opreator();
-
-
-    }
+                  answer=num*num2;
+}
     else if(op=="+"){
                 many_opreator();
         answer=num+num2+num3;
@@ -161,6 +159,19 @@ void MainWindow::on_equalto_clicked()
     temp=QString::number(answer);
     ui->label->setText(temp);
 
+    count=0;
+    num=0.0;
+    num2=0.0;
+   sum_in_memory=0.0;
+   num3=0.0;
+   n3=0;
+   num_s=0;
+   n=0;
+   n2=0;
+   Plus=false;
+   Minus=false;
+n=ui->label->text();
+num=n.toDouble();
 
 }
 
@@ -178,17 +189,30 @@ n3=0;
 num_s=0;
 n=0;
 n2=0;
-
+Plus=false;
+Minus=false;
 }
 void MainWindow::many_opreator(){
 
     if(count>1){
-        num3=num3+sum_in_memory;
-        qInfo()<<num3;
-        sum_in_memory=0.0;
-        n3=0;
+
+
+            num3=num3+sum_in_memory;
+            qInfo()<<num3;
+            sum_in_memory=0.0;
+            n3=0;
 
 }
+
 }
 
 
+void MainWindow::on_label_linkActivated(const QString &link)
+{
+    ui->label->setTextInteractionFlags(Qt::TextBrowserInteraction);
+}
+
+
+void MainWindow::on_pushButton_clicked(){
+
+}
